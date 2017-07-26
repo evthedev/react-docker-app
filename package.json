@@ -2,10 +2,26 @@
   "name": "react-docker-app",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "start": "webpack -p && node server.js",
+    "start-dev": "./node_modules/.bin/concurrently \"nodemon server.js\" \"webpack --watch\""
+  },
   "author": "Ev",
   "license": "MIT",
   "dependencies": {
     "express": "^4.15.3",
-    "global": "^4.3.2"
+    "global": "^4.3.2",
+    "typescript": "^2.4.2",
+    "webpack": "^3.4.1"
+  },
+  "devDependencies": {
+    "@types/react": "^15.0.39",
+    "@types/react-dom": "^15.5.1",
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.11.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "source-map-loader": "^0.2.1",
+    "ts-loader": "^2.3.1"
   }
 }
