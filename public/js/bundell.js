@@ -22426,6 +22426,18 @@ var AppComponent = (function (_super) {
         });
         return _this;
     }
+    AppComponent.prototype.mapContainer = function (kontenneh) {
+        return {
+            id: kontenneh.id,
+            name: _.chain(kontenneh.Names)
+                .map(function (nam) { return nam.substr(1); })
+                .join(", ")
+                .value(),
+            state: kontenneh.State,
+            image: kontenneh.image,
+            status: kontenneh.state + " (" + kontenneh.status + ")"
+        };
+    };
     AppComponent.prototype.render = function () {
         return (React.createElement("div", { className: "container" },
             React.createElement("h1", { className: "page-header" }, "Docker Dashboard"),

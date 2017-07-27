@@ -11,6 +11,7 @@ class AppStato {
 
 let socket = io.connect()
 
+
 export class AppComponent extends React.Component<{}, AppStato> {
 
     constructor() {
@@ -30,10 +31,22 @@ export class AppComponent extends React.Component<{}, AppStato> {
                 containers: partitioned[0].map(this.mapContainer),
                 stoppedContainers: partitioned[1].map(this.mapContainer)
             })
-        }
-
+        })
     }
         
+    mapContainer(kontenneh: any): Container {
+        return {
+            id: kontenneh.id,
+            name: _.chain(kontenneh.Names)
+                .map((nam: string) => nam.substr(1))
+                .join(", ")
+                .value(),
+            state: kontenneh.State,
+            image: kontenneh.image,
+            status: `${kontenneh.state} (${kontenneh.status})`
+        }
+    }
+    
     render() {
         return (
             <div className="container">
